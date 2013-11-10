@@ -11,17 +11,13 @@ public class Player {
 	private int x, y;
 	private ImageManager im;
 	public boolean up = false, dn = false, lt = false, rt = false;
-	public int anim, rtAnim;
-	Rectangle r, p;
-
+	public int anim;
 	public int playerFace = 0;
+
 	public Player(int x, int y, ImageManager im) {
 		this.x = x;
 		this.y = y;
 		this.im = im;
-		
-		r = new Rectangle(x, y, Game.PLAYER_WIDTH * Game.SCALE, Game.PLAYER_HEIGHT * Game.SCALE);
-		p = new Rectangle(100, 100, Game.TILE_WIDTH * Game.SCALE, Game.TILE_HEIGHT * Game.SCALE);
 	}
 	
 	public void tick() {
@@ -57,8 +53,6 @@ public class Player {
 		if(!(rt || lt || dn || up)) {
 			anim = 0;
 		}
-		r.setBounds(x, y, Game.PLAYER_WIDTH * Game.SCALE, Game.PLAYER_HEIGHT * Game.SCALE);
-		p.setBounds(100, 100, Game.TILE_WIDTH * Game.SCALE, Game.TILE_HEIGHT * Game.SCALE);
 		
 	}
 	public int getX() {
@@ -76,12 +70,6 @@ public class Player {
 	
 	
     public void render(Graphics g) {
-        //Colission Dev
-        g.drawRect((int)r.getX(), (int)r.getY(), (int)r.getWidth(), (int)r.getHeight());
-        g.drawRect((int)p.getX(), (int)p.getY(), (int)p.getWidth(), (int)p.getHeight());
-        if (r.intersects(p)){
-    	    g.drawString("COLLISION", 200, 200);
-    	}
 
 		if (playerFace == 0){
 			g.drawImage(im.player, x, y, Game.PLAYER_HEIGHT * Game.SCALE, Game.PLAYER_WIDTH * Game.SCALE, null);
