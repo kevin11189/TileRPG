@@ -271,10 +271,9 @@ public class TileMap {
 		tileLocation(g, im.borderTileFenceRight, 15, 13);
 		tileLocation(g, im.borderTileFenceRight, 15, 14);
 		tileLocation(g, im.borderTileFenceBottomRight, 15, 15);
-}
+	}
 	
 	private void tileLocation(Graphics g, BufferedImage bi, int col, int row) {
 		g.drawImage(bi, col * Game.TILE_WIDTH * Game.SCALE, row * Game.TILE_HEIGHT * Game.SCALE, Game.TILE_WIDTH * Game.SCALE, Game.TILE_HEIGHT * Game.SCALE, null);
 	}
-
 }

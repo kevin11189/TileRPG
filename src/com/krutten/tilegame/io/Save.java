@@ -6,22 +6,19 @@ import java.util.Scanner;
 import com.krutten.tilegame.Game;
 
 public class Save {
+
 	private File file;
 	private PrintWriter outputFile;
 	private Scanner inputFile;
 	
 	public Save(String filename) throws FileNotFoundException {
-	
 		file = new File(filename);
-		
-		
 	}
 	
 	public void saveFile() {
 		try {
 			outputFile = new PrintWriter(file);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		outputFile.println(Game.getPlayer().getX());
@@ -35,7 +32,4 @@ public class Save {
 		Game.getPlayer().setY(Integer.parseInt(inputFile.nextLine()));
 		inputFile.close();
 	}
-
-
-
 }

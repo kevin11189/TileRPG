@@ -21,15 +21,12 @@ public class Game extends Canvas implements Runnable {
 	public static final int OFFSET_TOP = 8, OFFSET_BOTTOM = 40, OFFSET_LEFT = 22, OFFSET_RIGHT = 30;
     public static boolean running = false;
     public Thread gameThread;
-    
     private BufferedImage spriteSheetPlayer;
     private BufferedImage spriteSheetTile;
     private ImageManager imp;
     private ImageManager imt;
-    
     private static TileMap tileMap;
     private static Player player;
-    
     public static Save save;
     
     public void init() {
@@ -38,23 +35,18 @@ public class Game extends Canvas implements Runnable {
     	spriteSheetTile = loader.load("/spritesheettile.png");
     	SpriteSheet ssp = new SpriteSheet(spriteSheetPlayer);
     	SpriteSheet sst = new SpriteSheet(spriteSheetTile);
-    	
-    	imp = new ImageManager(ssp);
+      	imp = new ImageManager(ssp);
     	imt = new ImageManager(sst);
-    	
-    	tileMap = new TileMap(imt);
+       	tileMap = new TileMap(imt);
     	player = new Player( (WIDTH/2) * SCALE,  (HEIGHT/2)* SCALE, imp);
-    	
     	try {
 			save = new Save("savefile.sav");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
     	this.addKeyListener(new KeyManager());
     }
-    
+
     public synchronized void start() {
         if (running)return;
         running = true;
@@ -68,32 +60,25 @@ public class Game extends Canvas implements Runnable {
         try {
             gameThread.join();
         } catch (InterruptedException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
     }
 
     public void run() {
     	init();
-        //Variables for setting up a 60 ticks per second
         long lastTime = System.nanoTime();
         final double AMOUNT_OF_TICKS = 60;
         double ns = 1000000000 / AMOUNT_OF_TICKS;
         double delta = 0;
-
         while (running) {
-
-            //Ticks
             long now = System.nanoTime();
             delta += ( now - lastTime ) / ns;
             lastTime = now;
             if(delta >= 1) {
                 tick();
                 delta--;
-                //Take Renders Out for Max FrameRate.. Was killing my cpu to render constantly.. At 60fps.
                 render();
             }
-
-            
         }
         stop();
     }
@@ -109,12 +94,9 @@ public class Game extends Canvas implements Runnable {
             return;
         }
         Graphics g = bs.getDrawGraphics();
-        //RENDER HERE
-
         g.fillRect(0, 0, WIDTH * SCALE, HEIGHT * SCALE);
         tileMap.render(g);
         player.render(g);
-        //END RENDER
         g.dispose();
         bs.show();
     }
@@ -124,14 +106,12 @@ public class Game extends Canvas implements Runnable {
         game.setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
         game.setMaximumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
         game.setMinimumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
-
         JFrame frame = new JFrame("Tile RPG");
         frame.setSize(WIDTH * SCALE, HEIGHT * SCALE);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.add(game);
         frame.setVisible(true);
-
         game.start();
     }
     

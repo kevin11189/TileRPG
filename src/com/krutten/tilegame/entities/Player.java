@@ -1,7 +1,6 @@
 package com.krutten.tilegame.entities;
 
 import java.awt.Graphics;
-import java.awt.Rectangle;
 
 import com.krutten.tilegame.Game;
 import com.krutten.tilegame.gfx.ImageManager;
@@ -55,22 +54,24 @@ public class Player {
 		}
 		
 	}
+
 	public int getX() {
 		return x;
 	}
+
 	public int getY() {
 		return y;
 	}
+
 	public void setX(int x) {
 		this.x = x;
 	}
+
 	public void setY(int y) {
 		this.y = y;
 	}
-	
-	
-    public void render(Graphics g) {
 
+    public void render(Graphics g) {
 		if (playerFace == 0){
 			g.drawImage(im.player, x, y, Game.PLAYER_HEIGHT * Game.SCALE, Game.PLAYER_WIDTH * Game.SCALE, null);
 		} else if (playerFace == 1) {
@@ -91,8 +92,6 @@ public class Player {
 				anim = 0;
 				g.drawImage(im.playerUpAnim5, x, y, Game.PLAYER_HEIGHT * Game.SCALE, Game.PLAYER_WIDTH * Game.SCALE, null);
 			}
-			
-			
 		} else if (playerFace == 2) {
 			if (anim == 0) {
 				g.drawImage(im.playerRight, x, y, Game.PLAYER_HEIGHT * Game.SCALE, Game.PLAYER_WIDTH * Game.SCALE, null);
@@ -110,7 +109,6 @@ public class Player {
 				anim = 0;
 				g.drawImage(im.playerRightAnim5, x, y, Game.PLAYER_HEIGHT * Game.SCALE, Game.PLAYER_WIDTH * Game.SCALE, null);
 			}
-			
 		} else if (playerFace == 3) {
 			//g.drawImage(im.playerDown, x, y, Game.PLAYER_HEIGHT * Game.SCALE, Game.PLAYER_WIDTH * Game.SCALE, null);
 			if (anim == 0) {
@@ -148,8 +146,5 @@ public class Player {
 				g.drawImage(im.playerLeftAnim5, x, y, Game.PLAYER_HEIGHT * Game.SCALE, Game.PLAYER_WIDTH * Game.SCALE, null);
 			}
 		}
-		
 	}
-
-
 }

@@ -6,8 +6,6 @@ import java.io.FileNotFoundException;
 
 public class KeyManager implements KeyListener {
 
-	
-
     public void keyTyped(KeyEvent e) {
 	}
 
@@ -35,7 +33,6 @@ public class KeyManager implements KeyListener {
 			try {
 				Game.save.loadFile();
 			} catch (FileNotFoundException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
