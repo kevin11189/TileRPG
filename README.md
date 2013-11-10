@@ -4,7 +4,7 @@ Description
 This is the readme file. This will be done in Markdown. It's not rocket science or a big deal, but it's here if we want to do something with it.
 
 
-## Line Endings / Tabs
+#### Line Endings / Tabs
 
 Unfortunately, I've done a bit of this in both IntelliJ and Eclipse, and how they handle spaces and tabs are different. I fixed it a bit, so the future shouldn't be too bad, but understand that I know things might seem a little weird.
 
