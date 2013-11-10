@@ -44,7 +44,6 @@ public class KeyManager implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_UP){
 			Game.getPlayer().up = false;
-			Game.getPlayer().rtAnim = 0;
 		}
 		if(e.getKeyCode() == KeyEvent.VK_DOWN){
 			Game.getPlayer().dn = false;
